@@ -1,0 +1,96 @@
+[gd_scene load_steps=9 format=4 uid="uid://lb1r1grh1cwt"]
+
+[ext_resource type="Shader" uid="uid://oo1xgnsphrnv" path="res://player_color_shader.gdshader" id="1_2iasx"]
+[ext_resource type="Texture2D" uid="uid://dmpyrd0i4py88" path="res://models/3cone_face.png" id="1_fugdf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_indbx"]
+render_priority = 0
+shader = ExtResource("1_2iasx")
+shader_parameter/playerColor = Vector3(0, 0, 0)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_bep4j"]
+_surfaces = [{
+"aabb": AABB(-0.384314, -0.5, -0.427923, 0.768627, 0.873249, 0.665651),
+"format": 34896613377,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAQADAAIAAgAJAAAAAgADAAoAAgAKAAkACgADAAUAAQAEAAMABAAFAAMAAAAGAAEABgAEAAEABwAAAAkAAAAHAAYACwAJAAoACgAFAAsACwAHAAkABAAGAAgABAAIAAUABgAHAAgACAALAAUACwAIAAcA"),
+"lods": [0.038035, PackedByteArray("AAABAAIAAQADAAIAAgADAAAAAQAEAAMABQAAAAMABAAFAAMAAAAGAAEABgAEAAEABQAHAAAAAAAHAAYABAAIAAUABQAIAAcABAAGAAgABgAHAAgA")],
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("AABkDrftAADbdmQOAAAAANt2//96ngAAI4n//3qeAAAjiWQOAAAAAP//ZA637QAA/38AADMLAAD4DAAAQfEAAAbzAABB8QAAIwlkDv//AAD/f///wbAAANv2ZA7//wAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_8ap2g"]
+resource_local_to_scene = true
+resource_name = "3cone_Cone"
+_surfaces = [{
+"aabb": AABB(-0.384314, -0.5, -0.427923, 0.768627, 0.873249, 0.665651),
+"attribute_data": PackedByteArray("xhBe16A8aougPAy+XkMMvl5Daos5b17X7joRjJw+qogtEGPVnTrii6A8aoteQ2qL0m9j1WJF4os5b17XxhBe115DDL6gPAy+jxW33m9qt97/v/6Oj5V/2G/qf9jGEF7XoDxqi6A8DL5eQ2qLOW9e115DDL7ZazXdJRQ13f8/5MOgPGqLb2pZ3tlrNd05b93cfhCS1cYQXtdjD3XaoDwMvl5DDL7/P+TD/z/kw9lrNd3ZazXdJRQ13SUUNd3/P+TD"),
+"format": 34896613399,
+"index_count": 60,
+"index_data": PackedByteArray("FwAYABkAGgAbABwAHQAeAB8ABgAHACAAIQAiACMAJAAlACYAJwAoACkACwAMAAUACwANAAwAAQADAAIAAQAEAAMAKgAOACsAKgAQAA4ALAASAC0ALAATABIAEQAuAA8AEQAvAC4AAAAJAAoAAAAIAAkAFAAVABYA"),
+"lods": [0.038035, PackedByteArray("AAABAAIAAQADAAIAAQAEAAMABAAFAAMABgAHAAEAAAAIAAkAAAAJAAoACwAMAAUACwANAAwADgAPABAAEQAQAA8ADgASAA8ADgATABIAFAAVABYA")],
+"material": SubResource("ShaderMaterial_indbx"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 48,
+"vertex_data": PackedByteArray("AABkDrftdPfbdmQOAAAb7dt2//96nhvtI4n//3qeG+0jiWQOAAAb7f//ZA637XT3/38AADMLEvYjiWQOAAAS9vgMAABB8XT3/38AADMLdPfbdmQOAAB09yOJZA4AAHT3BvMAAEHxdPf/fwAAMwt09///ZA637YO8AABkDrftg7wjif//ep6DvNt2//96noO8+AwAAEHxAZsG8wAAQfEBm/9/AAAzC/8/+AwAAEHx/z8G8wAAQfH/PwAAZA637fnd23ZkDgAA+d3bdv//ep753SOJZA4AAPnd//9kDrft+d0jif//ep753dv2ZA7///qJIwlkDv//+on/f///wbD6idt2ZA4AABL2BvMAAEHxBLPb9mQO//8Es///ZA637QSz+AwAAEHxdfAAAGQOt+118CMJZA7//3Xw23b//3qe/78jif//ep7/v/9////BsP+//3///8Gwg7zb9mQO//+DvNv2ZA7//wGbIwlkDv//AZsjCWQO//+DvP9////BsIO8FM5f2v///3////9/////f////3+fpRROEVuJOBFbiTgUzl/aFM5f2hTOX9qfpRROn6UUTp+lFE72spJikuIIzfaykmKS4gjNAAD/fwAA/38AAP9/AAD/fwAA/38i1K/FItSvxSLUr8VPuiNUT7ojVE+6I1T///9/////f////38RW4k4HGnCOBxpwjgcacI4JeCs4iXgrOIl4Kzi////f////3////9/9rKSYvaykmIAAP9/AAD/f5LiCM2S4gjN")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_bep4j")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lgwt0"]
+resource_name = "face"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("1_fugdf")
+roughness = 0.5
+texture_repeat = false
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_gy31o"]
+_surfaces = [{
+"aabb": AABB(-0.540227, -0.572664, -0.199849, 1.00599, 0.102975, 0.849314),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"name": "face",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("zwH///f/AAAHywAAMxsAAP//btj//wAAAABOBQAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_qvsyb"]
+resource_name = "3cone_face"
+_surfaces = [{
+"aabb": AABB(-0.540227, -0.572664, -0.199849, 1.00599, 0.102975, 0.849314),
+"attribute_data": PackedByteArray("AAD/////AAD/////AAAAAA=="),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"material": SubResource("StandardMaterial3D_lgwt0"),
+"name": "face",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("zwH///f/3sQHywAAMxvcxP//btj//9LEAABOBQAA+MRs+ZCCL/onghf+/n6086OF")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_gy31o")
+
+[node name="3ConePlayer" type="Node3D"]
+
+[node name="3cone" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -1.73205, 0, 2, 0, 1.73205, 0, -1, 0, 1, 0)
+
+[node name="Cone" type="MeshInstance3D" parent="3cone"]
+mesh = SubResource("ArrayMesh_8ap2g")
+skeleton = NodePath("")
+
+[node name="face" type="MeshInstance3D" parent="3cone"]
+transform = Transform3D(-0.223804, 0.882292, -2.66795e-08, 5.66802e-08, 0, -0.475468, -0.419502, -0.470702, -5.00085e-08, 0.597712, -0.140662, -0.415799)
+mesh = SubResource("ArrayMesh_qvsyb")
+skeleton = NodePath("")

@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://ripumxlg8a0k"]
+
+[ext_resource type="Script" uid="uid://cim4lc1pfqjhx" path="res://game1_scenes/spawner.gd" id="1_peul4"]
+[ext_resource type="PackedScene" uid="uid://cvvsyl818f2s8" path="res://game1_scenes/rock.tscn" id="2_gwwk4"]
+
+[node name="Spawner" type="PathFollow3D"]
+script = ExtResource("1_peul4")
+rock_scene = ExtResource("2_gwwk4")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(2.98023e-08, -1, 0, 1, 2.98023e-08, 0, 0, 0, 1, 0, 0, -0.36)
+target_position = Vector3(0, -35, 0)
+collision_mask = 2
+
+[node name="RayCast3D3" type="RayCast3D" parent="."]
+transform = Transform3D(2.98023e-08, -1, 0, 1, 2.98023e-08, 0, 0, 0, 1, 0, 0, -0.01)
+target_position = Vector3(0, -35, 0)
+collision_mask = 2
+
+[node name="RayCast3D2" type="RayCast3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0.36)
+target_position = Vector3(0, -35, 0)
+collision_mask = 2
+
+[node name="RockTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="RockTimer" to="." method="_on_rock_timer_timeout"]

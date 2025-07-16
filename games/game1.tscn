@@ -1,0 +1,367 @@
+[gd_scene load_steps=19 format=3 uid="uid://cpsucrpiw4rap"]
+
+[ext_resource type="Script" uid="uid://bnw2uxkg7i3mo" path="res://games/game_1.gd" id="1_mo76k"]
+[ext_resource type="Script" uid="uid://cim4lc1pfqjhx" path="res://game1_scenes/spawner.gd" id="2_1kuyx"]
+[ext_resource type="PackedScene" uid="uid://ripumxlg8a0k" path="res://game1_scenes/spawner.tscn" id="2_8l0pr"]
+[ext_resource type="Script" uid="uid://ckpanct6trmdt" path="res://games/count_down_label.gd" id="2_uqo2r"]
+[ext_resource type="Script" uid="uid://dlpqd7tx1r606" path="res://games/end_screen.gd" id="3_lb2mf"]
+[ext_resource type="PackedScene" uid="uid://cvvsyl818f2s8" path="res://game1_scenes/rock.tscn" id="3_uqo2r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mo76k"]
+size = Vector3(45, 1, 45)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mo76k"]
+size = Vector3(45, 1, 45)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1kuyx"]
+albedo_color = Color(0.961518, 4.45209e-06, 9.62615e-07, 1)
+emission_enabled = true
+emission = Color(1, 0.254902, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lb2mf"]
+size = Vector3(50, 2, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hx2ee"]
+albedo_color = Color(0.360784, 0.25098, 0.2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qffbl"]
+size = Vector3(50, 35.5, 100)
+
+[sub_resource type="Curve3D" id="Curve3D_mo76k"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 3.04378, 0, -16.0438, 0, 0, 0, 0, 0, 0, 3.04378, 0, 16.0438),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="SphereMesh" id="SphereMesh_gwwk4"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gwwk4"]
+height = 0.4
+radius = 1.5
+
+[sub_resource type="Curve3D" id="Curve3D_8l0pr"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -3.13634, 0, -16.0134, 0, 0, 0, 0, 0, 0, -3.01344, 0, 15.7676),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_1kuyx"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 16.0048, -2.44379e-05, 20.4586, 0, 0, 0, 0, 0, 0, -16.0055, -2.44379e-05, 20.4586),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_uqo2r"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -16.1039, -2.44379e-05, -20.6165, 0, 0, 0, 0, 0, 0, 16.0217, -2.44379e-05, -20.5501),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="Game1" type="Node3D"]
+script = ExtResource("1_mo76k")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="CountDownLabel" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 69.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_uqo2r")
+
+[node name="CountDownTimer" type="Timer" parent="Control/CountDownLabel"]
+autostart = true
+
+[node name="EndScreen" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -384.0
+offset_top = -168.0
+offset_right = 384.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_lb2mf")
+
+[node name="ColorRect" type="ColorRect" parent="Control/EndScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.607843)
+
+[node name="WinAnnouncement" type="Label" parent="Control/EndScreen"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -208.0
+offset_top = 80.0
+offset_right = 209.0
+offset_bottom = 163.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "Player P wins!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpawnMarker" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 8.74228e-08, -2.03867e-14, 2.73777e-08, 0.313164, 0.949699, 8.30253e-08, 0.949699, -0.313164, 0, 26.4, -12.8)
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="Ground" type="StaticBody3D" parent="Environment" groups=["death"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -0.25)
+shape = SubResource("BoxShape3D_mo76k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_mo76k")
+surface_material_override/0 = SubResource("StandardMaterial3D_1kuyx")
+
+[node name="Wall" type="StaticBody3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 1.83, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Wall"]
+mesh = SubResource("BoxMesh_lb2mf")
+surface_material_override/0 = SubResource("StandardMaterial3D_hx2ee")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.75, 0)
+shape = SubResource("BoxShape3D_qffbl")
+
+[node name="Wall2" type="StaticBody3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44, 1.83, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Wall2"]
+mesh = SubResource("BoxMesh_lb2mf")
+surface_material_override/0 = SubResource("StandardMaterial3D_hx2ee")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Wall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.75, 0)
+shape = SubResource("BoxShape3D_qffbl")
+
+[node name="Wall3" type="StaticBody3D" parent="Environment"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.83, 44)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Wall3"]
+mesh = SubResource("BoxMesh_lb2mf")
+surface_material_override/0 = SubResource("StandardMaterial3D_hx2ee")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Wall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.75, 0)
+shape = SubResource("BoxShape3D_qffbl")
+
+[node name="Wall4" type="StaticBody3D" parent="Environment"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.83, -44)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Wall4"]
+mesh = SubResource("BoxMesh_lb2mf")
+surface_material_override/0 = SubResource("StandardMaterial3D_hx2ee")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Wall4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.75, 0)
+shape = SubResource("BoxShape3D_qffbl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.084186, -0.96225, 0.258819, 0.0225575, 0.257834, 0.965926, -0.996195, 0.0871557, -5.56667e-08, 8.2, 15.55, 0)
+shadow_enabled = true
+
+[node name="Paths" type="Node" parent="."]
+
+[node name="LeftPath" type="Path3D" parent="Paths"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5, 0, 0)
+curve = SubResource("Curve3D_mo76k")
+
+[node name="Spawner" type="PathFollow3D" parent="Paths/LeftPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.04378, 0, -16.0438)
+rotation_mode = 0
+script = ExtResource("2_1kuyx")
+rock_scene = ExtResource("3_uqo2r")
+
+[node name="DirectionNode" type="Node3D" parent="Paths/LeftPath/Spawner"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.55, 0, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="Paths/LeftPath/Spawner/DirectionNode"]
+transform = Transform3D(2.98023e-08, -1, 0, 1, 2.98023e-08, 0, 0, 0, 1, 0, 0.014, -1.55)
+target_position = Vector3(0, -45, 0)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="RayCast3D3" type="RayCast3D" parent="Paths/LeftPath/Spawner/DirectionNode"]
+transform = Transform3D(2.98023e-08, -1, 0, 1, 2.98023e-08, 0, 0, 0, 1, 0, 0.0139636, -0.01)
+target_position = Vector3(0, -45, 0)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="RayCast3D2" type="RayCast3D" parent="Paths/LeftPath/Spawner/DirectionNode"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.014, 1.55)
+target_position = Vector3(0, -45, 0)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="RockTimer" type="Timer" parent="Paths/LeftPath/Spawner"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Paths/LeftPath/Spawner"]
+mesh = SubResource("SphereMesh_gwwk4")
+
+[node name="StartTimer" type="Timer" parent="Paths/LeftPath/Spawner"]
+wait_time = 0.05
+one_shot = true
+autostart = true
+
+[node name="Area3D" type="Area3D" parent="Paths/LeftPath/Spawner" groups=["rocks"]]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Paths/LeftPath/Spawner/Area3D"]
+shape = SubResource("CylinderShape3D_gwwk4")
+
+[node name="RightPath" type="Path3D" parent="Paths"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 0, 0)
+curve = SubResource("Curve3D_8l0pr")
+
+[node name="Spawner" parent="Paths/RightPath" instance=ExtResource("2_8l0pr")]
+transform = Transform3D(0.999996, 0, 0, 0, 1, 0, 0, 0, 0.999996, -3.01344, 0, 15.7676)
+progress = 34.7812
+
+[node name="TopPath" type="Path3D" parent="Paths"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+curve = SubResource("Curve3D_1kuyx")
+
+[node name="Spawner" type="PathFollow3D" parent="Paths/TopPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0048, -2.44379e-05, 20.4586)
+rotation_mode = 0
+script = ExtResource("2_1kuyx")
+rock_scene = ExtResource("3_uqo2r")
+
+[node name="DirectionNode" type="Node3D" parent="Paths/TopPath/Spawner"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -1.55)
+
+[node name="RayCast3D" type="RayCast3D" parent="Paths/TopPath/Spawner/DirectionNode"]
+transform = Transform3D(2.98023e-08, -1, 0, 1, 2.98023e-08, 0, 0, 0, 1, 0, 0.014, -1.55)
+target_position = Vector3(0, -45, 0)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="RayCast3D3" type="RayCast3D" parent="Paths/TopPath/Spawner/DirectionNode"]
+transform = Transform3D(2.98023e-08, -1, 0, 1, 2.98023e-08, 0, 0, 0, 1, 0, 0.0139636, -0.01)
+target_position = Vector3(0, -45, 0)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="RayCast3D2" type="RayCast3D" parent="Paths/TopPath/Spawner/DirectionNode"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.014, 1.55)
+target_position = Vector3(0, -45, 0)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="RockTimer" type="Timer" parent="Paths/TopPath/Spawner"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Paths/TopPath/Spawner"]
+mesh = SubResource("SphereMesh_gwwk4")
+
+[node name="StartTimer" type="Timer" parent="Paths/TopPath/Spawner"]
+wait_time = 0.05
+one_shot = true
+autostart = true
+
+[node name="Area3D" type="Area3D" parent="Paths/TopPath/Spawner" groups=["rocks"]]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Paths/TopPath/Spawner/Area3D"]
+shape = SubResource("CylinderShape3D_gwwk4")
+
+[node name="BottomPath" type="Path3D" parent="Paths"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+curve = SubResource("Curve3D_uqo2r")
+
+[node name="Spawner" type="PathFollow3D" parent="Paths/BottomPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.1039, -2.44379e-05, -20.6165)
+rotation_mode = 0
+script = ExtResource("2_1kuyx")
+rock_scene = ExtResource("3_uqo2r")
+
+[node name="DirectionNode" type="Node3D" parent="Paths/BottomPath/Spawner"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 1.65)
+
+[node name="RayCast3D" type="RayCast3D" parent="Paths/BottomPath/Spawner/DirectionNode"]
+transform = Transform3D(2.98023e-08, -1, 0, 1, 2.98023e-08, 0, 0, 0, 1, 0, 0.014, -1.55)
+target_position = Vector3(0, -45, 0)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="RayCast3D3" type="RayCast3D" parent="Paths/BottomPath/Spawner/DirectionNode"]
+transform = Transform3D(2.98023e-08, -1, 0, 1, 2.98023e-08, 0, 0, 0, 1, 0, 0.0139636, -0.01)
+target_position = Vector3(0, -45, 0)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="RayCast3D2" type="RayCast3D" parent="Paths/BottomPath/Spawner/DirectionNode"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.014, 1.55)
+target_position = Vector3(0, -45, 0)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="RockTimer" type="Timer" parent="Paths/BottomPath/Spawner"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Paths/BottomPath/Spawner"]
+mesh = SubResource("SphereMesh_gwwk4")
+
+[node name="StartTimer" type="Timer" parent="Paths/BottomPath/Spawner"]
+wait_time = 0.05
+one_shot = true
+autostart = true
+
+[node name="Area3D" type="Area3D" parent="Paths/BottomPath/Spawner" groups=["rocks"]]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Paths/BottomPath/Spawner/Area3D"]
+shape = SubResource("CylinderShape3D_gwwk4")
+
+[connection signal="timeout" from="Control/CountDownLabel/CountDownTimer" to="Control/CountDownLabel" method="_on_count_down_timer_timeout"]
+[connection signal="timeout" from="Paths/LeftPath/Spawner/RockTimer" to="Paths/LeftPath/Spawner" method="_on_rock_timer_timeout"]
+[connection signal="timeout" from="Paths/LeftPath/Spawner/StartTimer" to="Paths/LeftPath/Spawner" method="_on_start_timer_timeout"]
+[connection signal="timeout" from="Paths/TopPath/Spawner/RockTimer" to="Paths/TopPath/Spawner" method="_on_rock_timer_timeout"]
+[connection signal="timeout" from="Paths/TopPath/Spawner/StartTimer" to="Paths/TopPath/Spawner" method="_on_start_timer_timeout"]
+[connection signal="timeout" from="Paths/BottomPath/Spawner/RockTimer" to="Paths/BottomPath/Spawner" method="_on_rock_timer_timeout"]
+[connection signal="timeout" from="Paths/BottomPath/Spawner/StartTimer" to="Paths/BottomPath/Spawner" method="_on_start_timer_timeout"]

@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8da2vkffdcfh"]
+
+[ext_resource type="Script" uid="uid://bf5see6o77wbu" path="res://player.gd" id="1_4flbx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_onrkg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4flbx"]
+size = Vector3(0.6, 0.2, 0.6)
+
+[node name="Player" type="CharacterBody3D"]
+collision_mask = 3
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+platform_on_leave = 2
+script = ExtResource("1_4flbx")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_onrkg")
+
+[node name="JumpExtendTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="JumpExtendStartTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="LavaArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0133535, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LavaArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00671387, 0.110382, 0.00210571)
+shape = SubResource("BoxShape3D_4flbx")
+debug_color = Color(0.972549, 0, 0.435294, 1)
+
+[connection signal="timeout" from="JumpExtendTimer" to="." method="_on_jump_extend_timer_timeout"]
+[connection signal="timeout" from="JumpExtendStartTimer" to="." method="_on_jump_extend_start_timer_timeout"]
+[connection signal="body_entered" from="LavaArea" to="." method="_on_lava_area_body_entered"]
